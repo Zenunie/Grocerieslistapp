@@ -49,7 +49,7 @@ function App() {
   };
   return (
     <div className="App">
-      <Header title="Groceries List" />
+      <Header title="Groceries" length={items.length} />
       <AddItem
         newItem={newItem}
         setNewItem={setNewItem}
@@ -60,7 +60,7 @@ function App() {
         handleCheck={handleCheck}
         handleDelete={handleDelete}
       />
-      <Footer length={items.length} />
+      <Footer length={items.length} completed={items.filter((item) => item.checked).length} />
     </div>
   );
 }

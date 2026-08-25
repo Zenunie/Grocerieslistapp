@@ -4,23 +4,25 @@ const ItemList = ({ items, handleCheck, handleDelete }) => {
   return (
     <ul>
       {items.map((item) => (
-        <li className="item" key={item.id}>
+        <li className={`item${item.checked ? " completed" : ""}`} key={item.id}>
           <input
+            id={`item-${item.id}`}
             type="checkbox"
             onChange={() => handleCheck(item.id)}
             checked={item.checked}
           />
           <label
-            style={item.checked ? { textDecoration: "line-through" } : null}
+            htmlFor={`item-${item.id}`}
             onDoubleClick={() => handleCheck(item.id)}
           >
             {item.item}
           </label>
-          <FaTrashAlt
+          <button
+            className="delete-button"
             onClick={() => handleDelete(item.id)}
-            role="button"
-            tabIndex="0"
-          />
+            aria-label={`Remove ${item.item}`}
+            type="button"
+          ><FaTrashAlt aria-hidden="true" /></button>
         </li>
       ))}
     </ul>

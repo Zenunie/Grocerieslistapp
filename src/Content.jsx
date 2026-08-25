@@ -10,7 +10,11 @@ const Content = ({ items, handleCheck, handleDelete }) => {
           handleCheck={handleCheck}
         />
       ) : (
-        <p style={{ marginTop: "2rem" }}>Your list is empty.</p>
+        <div className="empty-state">
+          <div className="empty-icon" aria-hidden="true">✓</div>
+          <h2>Your list is clear</h2>
+          <p>Add your first item above and make the next grocery run effortless.</p>
+        </div>
       )}
     </main>
   );
